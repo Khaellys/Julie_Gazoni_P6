@@ -6,7 +6,7 @@ const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
-mongoose.connect("mongodb+srv://Kaellis:swyFoI0PIEHuKNb4@cluster0.4hsrv.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://User:password@cluster0.4hsrv.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
 db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
