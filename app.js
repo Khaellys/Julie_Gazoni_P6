@@ -6,8 +6,11 @@ const app = express();
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const dotenv = require('dotenv');
 
-mongoose.connect("mongodb+srv://User:password@cluster0.4hsrv.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI);
 
 db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
