@@ -1,8 +1,9 @@
 const express = require('express');
+const helmet = require('helmet'); 
 const mongoose = require('mongoose');
 
 const app = express();
-const stuffRoutes = require('./routes/stuff');
+const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
@@ -40,7 +41,10 @@ app.use((req, res, next) => {
   console.log('Réponse envoyée avec succès !');
 });
 
-app.use('/api/stuff', stuffRoutes);
+app.use(helmet());
+app.use(express.json()); // Verif si OK
+
+app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes); //verifier route
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
