@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet'); 
 const mongoose = require('mongoose');
-
+//const Sauce = require('./models/Sauce');
 const app = express();
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.use(helmet());
-app.use(express.json()); // Verif si OK
+app.use(express.json());
 
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes); //verifier route
