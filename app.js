@@ -17,6 +17,9 @@ db.once('open', function() {
   console.log("connecté à Mongoose")
 });
 
+app.use(helmet(), express.json());
+
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -24,10 +27,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(helmet(), express.json());
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes); //verifier route
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 module.exports = app;

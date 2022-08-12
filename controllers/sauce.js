@@ -22,15 +22,26 @@ exports.getOneSauce = (req, res, next) => {
 };
 
 exports.modifySauce = (req, res, next) => { //revoir const sauce
-  const sauce = new Sauce({
-    _id: req.params.id,
-    title: req.body.title,
-    description: req.body.description,
-    imageUrl: req.body.imageUrl,
-    userId: req.body.userId
-  });
+  const sauceObject = req.file ? {
+    ...JSON.parse(req.body.sauce),
+    imageURL: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+  } : { ...req.body };
 
-  Sauce.updateOne({_id: req.params.id}, thing)
+  delete sauceObject._userId;
+  Sauce.findOne({_id: req.params.id})
+      .then((sauce) => {
+          if (sauce.userId != req.auth.userId) {
+              res.status(401).json({ message : 'Not authorized'});
+          } else {
+              Sauce.updateOne({ _id: req.params.id}, { ...sauceObject, _id: req.params.id})
+              .then(() => res.status(200).json({message : 'Sauce modifiée!'}))
+              .catch(error => res.status(401).json({ error }));
+          }
+      })
+      .catch((error) => {
+          res.status(400).json({ error });
+      });
+      Sauce.updateOne({_id: req.params.id}, thing)
   .then(() => { res.status(201).json({message: 'Sauce mise à jour !'})})
   .catch((error) => {
     res.status(400).json({error: error})});

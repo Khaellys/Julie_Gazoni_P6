@@ -18,7 +18,7 @@ Définitions modules
 
 **Multer :** package qui permet de gérer les fichiers entrants dans les requêtes HTTP
 
-**Node.js :** runtime qui permet d'écrire toutes nos tâches côté serveur, en JavaScript, telles que la logique métier, la persistance des données et la sécurité. Node ajoute également des fonctionnalités que le JavaScript du navigateur standard ne possède pas, comme par exemple l'accès au système de fichiers local
+**Node.js :** runtime qui permet d'écrire toutes les tâches côté serveur. Ajoute également des fonctionnalités que le JavaScript du navigateur standard ne possède pas, comme par exemple l'accès au système de fichiers local
 
 **Nodemon :** package qui met à jour le serveur démarré à chaque changement de fichier, facilitant le développement Node
 
