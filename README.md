@@ -6,6 +6,8 @@ Définitions modules
 
 **Express :** infrastructure d'applications Web Node.js minimaliste et flexible 
 
+**Express-rate-limit :** limite le nombre de requêtes que peut faire un client
+
 **Helmet :** collection de fonctions middleware définissant des en-têtes HTTP liés à la sécurité
 
 **Jsonwebtoken :** access token (jeton d’accès) aux normes RFC 7519 (cf https://www.rfc-editor.org/rfc/rfc7519) qui permet un échange sécurisé de donnée entre deux parties
