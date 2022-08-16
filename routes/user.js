@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const userCtrl = require('../controllers/user');
+const userCtrl = require("../controllers/user");
 
-router.post('/signup', userCtrl.signup); // verifier route
-router.post('/login', userCtrl.login); // verifier route
+router.post("/signup", userCtrl.signup); // verifier route
+router.post("/login", userCtrl.login); // verifier route
 
 module.exports = router;
