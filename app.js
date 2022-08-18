@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const Sauce = require("./models/sauce");
@@ -18,6 +19,7 @@ db.once("open", function () {
   console.log("connecté à Mongoose");
 });
 
+app.use(mongoSanitize());
 app.use(helmet(), express.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
